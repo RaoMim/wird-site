@@ -143,16 +143,88 @@
             line-height: 1.5;
         }
 
-        /* Contact + Links */
-        .cta-section {
-            text-align: center;
-            padding: 32px 24px 24px;
-            max-width: 600px;
+        /* Contact Form */
+        .contact {
+            max-width: 520px;
             margin: 0 auto;
+            padding: 0 24px 48px;
         }
-        .cta-section p { font-size: 14px; color: #78716C; }
-        .cta-section a { font-weight: 500; }
+        .contact h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1C1917;
+            text-align: center;
+            margin-bottom: 4px;
+        }
+        .contact .subtitle {
+            font-size: 14px;
+            color: #78716C;
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .contact form {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .contact input,
+        .contact textarea {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #D6D3D1;
+            border-radius: 10px;
+            font-size: 15px;
+            font-family: inherit;
+            background: #fff;
+            color: #1C1917;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        .contact input:focus,
+        .contact textarea:focus {
+            border-color: #0D9488;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+        }
+        .contact input::placeholder,
+        .contact textarea::placeholder {
+            color: #A8A29E;
+        }
+        .contact textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        .contact button {
+            background: #0D9488;
+            color: #fff;
+            border: none;
+            padding: 13px 24px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .contact button:hover { background: #0F766E; }
+        .contact button:disabled {
+            background: #A8A29E;
+            cursor: not-allowed;
+        }
+        #form-result {
+            text-align: center;
+            font-size: 14px;
+            min-height: 20px;
+        }
+        #form-result.success { color: #059669; }
+        #form-result.error { color: #DC2626; }
+        #form-result.sending { color: #78716C; }
 
+        /* Links */
         .links-section {
             max-width: 600px;
             margin: 0 auto;
@@ -198,7 +270,9 @@
             .features { padding: 0 16px 36px; }
             .features-grid { grid-template-columns: 1fr; gap: 12px; }
             .feature-card { padding: 18px; }
-            .cta-section { padding: 24px 16px 20px; }
+            .contact { padding: 0 16px 36px; }
+            .contact h2 { font-size: 20px; }
+            .form-row { grid-template-columns: 1fr; gap: 12px; }
             .links-section { padding: 0 16px 24px; }
             footer { padding: 16px; }
         }
@@ -212,6 +286,7 @@
                 <a href="index.html">Home</a>
                 <a href="privacy.html">Privacy</a>
                 <a href="terms.html">Terms</a>
+                <a href="index.html#contact">Contact</a>
             </nav>
         </div>
     </header>
@@ -258,8 +333,24 @@
         </div>
     </section>
 
-    <section class="cta-section">
-        <p>Questions or feedback? Reach out at <a href="mailto:Maymounoumaadane@gmail.com">Maymounoumaadane@gmail.com</a></p>
+    <section class="contact" id="contact">
+        <h2>Get in Touch</h2>
+        <p class="subtitle">Questions, feedback, or just want to say salam?</p>
+
+        <form id="contact-form">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="hidden" name="subject" value="New message from Wird website">
+            <input type="hidden" name="from_name" value="Wird Contact Form">
+            <input type="checkbox" name="botcheck" style="display:none;">
+
+            <div class="form-row">
+                <input type="text" name="name" placeholder="Your name" required>
+                <input type="email" name="email" placeholder="Your email" required>
+            </div>
+            <textarea name="message" placeholder="Your message..." required></textarea>
+            <button type="submit">Send Message</button>
+            <div id="form-result"></div>
+        </form>
     </section>
 
     <section class="links-section">
@@ -270,5 +361,51 @@
     <footer>
         <p>&copy; 2026 Wird. All rights reserved.</p>
     </footer>
+
+    <script>
+        const form = document.getElementById("contact-form");
+        const result = document.getElementById("form-result");
+        const submitBtn = form.querySelector("button[type='submit']");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+            result.className = "sending";
+            result.textContent = "";
+
+            const formData = new FormData(form);
+            const json = JSON.stringify(Object.fromEntries(formData));
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: json
+            })
+            .then(async (response) => {
+                const data = await response.json();
+                if (response.status === 200) {
+                    result.className = "success";
+                    result.textContent = "Message sent! We'll get back to you soon.";
+                    form.reset();
+                } else {
+                    result.className = "error";
+                    result.textContent = data.message || "Something went wrong. Please try again.";
+                }
+            })
+            .catch(() => {
+                result.className = "error";
+                result.textContent = "Network error. Please try again.";
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Send Message";
+                setTimeout(() => { result.textContent = ""; result.className = ""; }, 5000);
+            });
+        });
+    </script>
 </body>
 </html>
