@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — Wird</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #FAFAF9;
+            color: #1C1917;
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        a { color: #0D9488; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        header {
+            background: #fff;
+            border-bottom: 1px solid #E7E5E4;
+            padding: 16px 24px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .header-inner {
+            max-width: 720px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo { font-size: 20px; font-weight: 700; color: #0D9488; }
+        nav { display: flex; gap: 20px; font-size: 14px; }
+        main {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #0D9488;
+        }
+        .updated {
+            font-size: 14px;
+            color: #78716C;
+            margin-bottom: 32px;
+        }
+        h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            color: #1C1917;
+        }
+        p, li { margin-bottom: 12px; }
+        ul { padding-left: 20px; }
+        li { padding-left: 4px; }
+        .summary-box {
+            background: #F0FDFA;
+            border-left: 4px solid #0D9488;
+            padding: 16px 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 32px;
+            font-size: 15px;
+        }
+        .summary-box strong { color: #0D9488; }
+        footer {
+            border-top: 1px solid #E7E5E4;
+            padding: 24px;
+            text-align: center;
+            font-size: 13px;
+            color: #78716C;
+        }
+        .toc {
+            background: #fff;
+            border: 1px solid #E7E5E4;
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+        }
+        .toc h3 { font-size: 14px; font-weight: 600; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; color: #78716C; }
+        .toc ol { padding-left: 20px; margin-bottom: 0; }
+        .toc li { margin-bottom: 4px; font-size: 14px; }
+        @media (max-width: 480px) {
+            h1 { font-size: 26px; }
+            h2 { font-size: 18px; }
+            main { padding: 24px 16px 60px; }
+            nav { gap: 12px; font-size: 13px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="index.html" class="logo">Wird</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1>Privacy Policy</h1>
+        <p class="updated">Last updated: February 13, 2026</p>
+
+        <div class="summary-box">
+            <strong>In short:</strong> Your prayer data stays 100% on your device. We don't require an account or login. We collect minimal anonymous analytics to improve the app. We never sell your data.
+        </div>
+
+        <div class="toc">
+            <h3>Contents</h3>
+            <ol>
+                <li><a href="#prayer-data">Prayer Data</a></li>
+                <li><a href="#onboarding-analytics">Anonymous Onboarding Analytics</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+                <li><a href="#usage-analytics">Usage Analytics</a></li>
+                <li><a href="#subscriptions">Subscriptions</a></li>
+                <li><a href="#prayer-times">Prayer Times</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#notifications">Push Notifications</a></li>
+                <li><a href="#third-parties">Third-Party Sharing</a></li>
+                <li><a href="#children">Children's Privacy</a></li>
+                <li><a href="#data-deletion">Data Deletion</a></li>
+                <li><a href="#changes">Changes to This Policy</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+            </ol>
+        </div>
+
+        <p>Wird ("we", "our", or "the app") is a Muslim prayer habit tracker. This Privacy Policy explains what data we collect, how we use it, and your rights regarding that data.</p>
+
+        <h2 id="prayer-data">1. Prayer Data</h2>
+        <p>All prayer tracking data — including your daily prayer logs, streak history, and habit records — is stored <strong>100% on your device</strong> using local storage (AsyncStorage). This data is never transmitted to any server. We cannot access, read, or recover your prayer data.</p>
+
+        <h2 id="onboarding-analytics">2. Anonymous Onboarding Analytics</h2>
+        <p>When you complete the onboarding flow, we send a small set of anonymous data to our server (Supabase) to help us understand and improve the onboarding experience:</p>
+        <ul>
+            <li><strong>Device ID:</strong> A randomly generated UUID created by the app. This is <em>not</em> your Apple IDFA or any hardware identifier.</li>
+            <li><strong>Name:</strong> Only if you choose to provide it during onboarding.</li>
+            <li><strong>Hardest prayers:</strong> Which prayers you selected as most difficult.</li>
+            <li><strong>Goal:</strong> The prayer goal you selected.</li>
+            <li><strong>Notifications enabled:</strong> Whether you enabled notifications.</li>
+        </ul>
+        <p>This data is anonymous — there is no account, no login, and no way to tie it to your real-world identity.</p>
+
+        <h2 id="feedback">3. Feedback</h2>
+        <p>If you voluntarily submit feedback through the app's settings, we collect:</p>
+        <ul>
+            <li><strong>Device ID:</strong> The same randomly generated UUID.</li>
+            <li><strong>Message:</strong> The feedback you write.</li>
+            <li><strong>Email:</strong> Only if you choose to provide it.</li>
+            <li><strong>App version</strong> and <strong>device info:</strong> To help us reproduce issues.</li>
+        </ul>
+        <p>Feedback is sent to our Supabase database. We only collect this data when you explicitly submit the feedback form.</p>
+
+        <h2 id="usage-analytics">4. Usage Analytics</h2>
+        <p>We use <strong>PostHog</strong> to collect anonymous app usage events such as screen views, button taps, and onboarding funnel progression. This helps us understand how the app is used and improve the experience.</p>
+        <ul>
+            <li>PostHog data is hosted in the <strong>United States</strong> (us.i.posthog.com).</li>
+            <li>Events are anonymous and not linked to your personal identity.</li>
+            <li>No prayer data or religious activity is included in analytics events.</li>
+        </ul>
+
+        <h2 id="subscriptions">5. Subscriptions</h2>
+        <p>Subscriptions are managed entirely by <strong>RevenueCat</strong> and <strong>Apple</strong>. Wird does not collect, store, or have access to your payment information, credit card number, or Apple ID. All billing is handled through Apple's App Store.</p>
+
+        <h2 id="prayer-times">6. Prayer Times</h2>
+        <p>To fetch accurate prayer times, the app sends your <strong>city and country</strong> to the <strong>Aladhan API</strong> (aladhan.com), a free, public prayer times service. Prayer times are cached locally on your device to minimize network requests.</p>
+
+        <h2 id="location">7. Location</h2>
+        <p>The app uses location services (<strong>expo-location</strong>) only when you explicitly tap "Detect my location" to set your city for prayer times. Your location is:</p>
+        <ul>
+            <li>Used once to determine your city and country.</li>
+            <li>Not tracked, stored on any server, or monitored in the background.</li>
+            <li>Never shared with third parties.</li>
+        </ul>
+
+        <h2 id="notifications">8. Push Notifications</h2>
+        <p>Wird uses <strong>expo-notifications</strong> to schedule prayer reminders. All notifications are <strong>scheduled and triggered locally on your device</strong>. There is no remote push notification server. We do not send you marketing messages or third-party notifications.</p>
+
+        <h2 id="third-parties">9. Third-Party Sharing</h2>
+        <p><strong>We do not sell, rent, or share your personal data with third parties for advertising or marketing purposes.</strong></p>
+        <p>The third-party services we use are limited to:</p>
+        <ul>
+            <li><strong>Supabase:</strong> Anonymous onboarding analytics and feedback storage.</li>
+            <li><strong>PostHog:</strong> Anonymous usage analytics.</li>
+            <li><strong>RevenueCat:</strong> Subscription management.</li>
+            <li><strong>Aladhan API:</strong> Prayer time calculation.</li>
+            <li><strong>Apple:</strong> App Store and payment processing.</li>
+        </ul>
+
+        <h2 id="children">10. Children's Privacy</h2>
+        <p>Wird is not directed at children under the age of 13. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal information, please contact us and we will promptly delete it.</p>
+
+        <h2 id="data-deletion">11. Data Deletion</h2>
+        <p>Since Wird does not require an account, <strong>uninstalling the app deletes all local data</strong> (prayer logs, streaks, settings) from your device permanently.</p>
+        <p>To request deletion of any data stored on our servers (anonymous onboarding responses or feedback), please contact us at the email below. We will process your request within 30 days.</p>
+
+        <h2 id="changes">12. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last updated" date. We encourage you to review this policy periodically.</p>
+
+        <h2 id="contact">13. Contact Us</h2>
+        <p>If you have any questions about this Privacy Policy or want to request data deletion, contact us at:</p>
+        <p><strong>Email:</strong> <a href="mailto:Maymounoumaadane@gmail.com">Maymounoumaadane@gmail.com</a></p>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Wird. All rights reserved. · <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a></p>
+    </footer>
+</body>
+</html>
